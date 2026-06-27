@@ -9,7 +9,7 @@ export function Hero() {
       className="relative min-h-screen bg-navy-gradient overflow-hidden flex items-center pt-32 pb-20"
     >
       {/* Road perspective SVG */}
-      <svg
+      {/* <svg
         className="absolute inset-0 w-full h-full pointer-events-none"
         viewBox="0 0 1200 900"
         preserveAspectRatio="xMidYMax slice"
@@ -21,10 +21,10 @@ export function Hero() {
             <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
           </linearGradient>
         </defs>
-        {/* Road edges */}
+        
         <path d="M 100 900 L 560 250" stroke="url(#roadFade)" strokeWidth="1.5" fill="none" />
         <path d="M 1100 900 L 640 250" stroke="url(#roadFade)" strokeWidth="1.5" fill="none" />
-        {/* Animated center dashed line */}
+      
         <motion.line
           x1="600"
           y1="900"
@@ -34,10 +34,50 @@ export function Hero() {
           strokeWidth="3"
           strokeDasharray="20 18"
           initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.85 }}
+          animate={{ pathLength: 1, opacity: 0.2 }}
           transition={{ duration: 2.2, ease: "easeOut", delay: 0.3 }}
         />
-      </svg>
+      </svg>  */}
+<svg
+  className="absolute bottom-0 left-0 w-full h-1/2 pointer-events-none"  // ← changed from "absolute inset-0 w-full h-full"
+  viewBox="0 0 1200 450"   // ← halved the height (was 900)
+  preserveAspectRatio="xMidYMax slice"
+  aria-hidden
+>
+  <defs>
+    <linearGradient id="roadFade" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stopColor="#ffffff" stopOpacity="0.4" />
+      <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+    </linearGradient>
+  </defs>
+  {/* Road edges */}
+  <path d="M 100 450 L 560 0" stroke="url(#roadFade)" strokeWidth="1.5" fill="none" />
+  <path d="M 1100 450 L 640 0" stroke="url(#roadFade)" strokeWidth="1.5" fill="none" />
+  {/* Animated center dashed line */}
+  {/* <motion.line
+    x1="600"
+    y1="450"
+    x2="600"
+    y2="0"
+    stroke="#ffffff"
+    strokeWidth="3"
+    strokeDasharray="20 18"
+    initial={{ pathLength: 0, opacity: 0 }}
+    animate={{ pathLength: 1, opacity: 0.2 }}
+    transition={{ duration: 2.2, ease: "easeOut", delay: 0.3 }}
+  /> */}
+  <motion.path
+  d="M 600 450 L 600 0"
+  stroke="#ffffff"
+  strokeWidth="3"
+  strokeDasharray="20 18"
+  strokeLinecap="round"
+  fill="none"
+  initial={{ pathLength: 0, opacity: 0 }}
+  animate={{ pathLength: 1, opacity: 0.35 }}
+  transition={{ duration: 2.2, ease: "easeOut", delay: 0.3 }}
+/>
+</svg>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 w-full">
         <motion.p
