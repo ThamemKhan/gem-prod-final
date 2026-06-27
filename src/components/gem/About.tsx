@@ -55,8 +55,8 @@ export function About() {
             </div>
             <div className="flex items-center gap-3">
               <Mail className="h-4 w-4 text-[color:var(--brand-blue)]" />
-              <a href="mailto:gembuilders_covai@yahoo.com" className="hover:text-[color:var(--brand-blue)] break-all">
-                gembuilders_covai@yahoo.com
+              <a href="mailto:gembuildersmd@gmail.com" className="hover:text-[color:var(--brand-blue)] break-all">
+                gembuildersmd@gmail.com
               </a>
             </div>
             <div className="flex items-start gap-3">

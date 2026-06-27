@@ -27,14 +27,14 @@ export function Footer() {
           <ul className="space-y-3 text-sm">
             <li>Er. S. Mohammed Shafi</li>
             <li><a href="tel:9843407000" className="hover:text-white">9843407000</a></li>
-            <li className="break-all"><a href="mailto:gembuilders_covai@yahoo.com" className="hover:text-white">gembuilders_covai@yahoo.com</a></li>
+            <li className="break-all"><a href="mailto:gembuildersmd@gmail.com" className="hover:text-white">gembuildersmd@gmail.com</a></li>
             <li className="text-white/60">Ramanathapuram, Coimbatore – 641045</li>
           </ul>
         </div>
       </div>
       <div className="mt-14 border-t border-white/10 pt-6 mx-auto max-w-7xl px-6 text-xs text-white/40 flex flex-col sm:flex-row gap-2 justify-between">
-        <p>© 2025 Gem Road Constructions. All Rights Reserved.</p>
-        <p>Designed with precision.</p>
+        <p>© 2026 Gem Road Constructions. All Rights Reserved.</p>
+        {/* <p>Designed with precision.</p> */}
       </div>
     </footer>
   );

@@ -131,10 +131,10 @@ export function Contact() {
                 <div>
                   <p className="text-eyebrow text-[color:var(--silver)] mb-1">Email</p>
                   <a
-                    href="mailto:gembuilders_covai@yahoo.com"
+                    href="mailto:gembuildersmd@gmail.com"
                     className="hover:text-[color:var(--brand-blue)] break-all"
                   >
-                    gembuilders_covai@yahoo.com
+                    gembuildersmd@gmail.com
                   </a>
                 </div>
               </div>
