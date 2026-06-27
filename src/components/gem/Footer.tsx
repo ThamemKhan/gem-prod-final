@@ -28,7 +28,8 @@ export function Footer() {
             <li>Er. S. Mohammed Shafi</li>
             <li><a href="tel:9843407000" className="hover:text-white">9843407000</a></li>
             <li className="break-all"><a href="mailto:gembuildersmd@gmail.com" className="hover:text-white">gembuildersmd@gmail.com</a></li>
-            <li className="text-white/60">Ramanathapuram, Coimbatore – 641045</li>
+            <li className="text-white/60">Shop no 1,ground floor,Mother's Complex, Central Studio Road,
+                Singanallur, Coimbatore-641005.</li>
           </ul>
         </div>
       </div>
