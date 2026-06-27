@@ -121,8 +121,8 @@ export function Contact() {
                 <div>
                   <p className="text-eyebrow text-[color:var(--silver)] mb-1">Address</p>
                   <p className="text-white/90 leading-relaxed">
-                    4th Floor, Palanisamy Towers, 135, Dharmaraj Layout, Sowripalayam Pirivu Road,
-                    Ramanathapuram, Coimbatore – 641045
+                  Shop no 1,ground floor,Mother's Complex, Central Studio Road,
+                  Singanallur, Coimbatore-641005.
                   </p>
                 </div>
               </div>
@@ -139,7 +139,7 @@ export function Contact() {
                 </div>
               </div>
             </div>
-            <div className="mt-8 rounded-xl overflow-hidden border border-white/10 flex-1 min-h-[200px]">
+            {/* <div className="mt-8 rounded-xl overflow-hidden border border-white/10 flex-1 min-h-[200px]">
               <iframe
                 title="Gem Road Constructions Location"
                 src="https://www.google.com/maps?q=Ramanathapuram,+Coimbatore&output=embed"
@@ -147,7 +147,7 @@ export function Contact() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>
