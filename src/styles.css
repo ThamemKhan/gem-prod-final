@@ -1,0 +1,171 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand tokens */
+  --color-navy: var(--navy);
+  --color-steel: var(--steel);
+  --color-brand-blue: var(--brand-blue);
+  --color-silver: var(--silver);
+  --color-light-silver: var(--light-silver);
+
+  --font-display: "Barlow Condensed", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-accent: "Rajdhani", sans-serif;
+
+  --shadow-glow: 0 0 40px -8px var(--brand-blue);
+  --shadow-elevated: 0 24px 48px -16px oklch(0 0 0 / 0.5);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Brand palette */
+  --navy: oklch(0.18 0.04 255);          /* #0A1628 */
+  --steel: oklch(0.38 0.10 255);         /* #1B4B82 */
+  --brand-blue: oklch(0.62 0.14 245);    /* #2E86C1 */
+  --silver: oklch(0.82 0.01 255);        /* #C0C8D2 */
+  --light-silver: oklch(0.93 0.005 255); /* #E8ECF0 */
+
+  --background: oklch(1 0 0);
+  --foreground: var(--navy);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--navy);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--navy);
+  --primary: var(--brand-blue);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--light-silver);
+  --secondary-foreground: var(--navy);
+  --muted: var(--light-silver);
+  --muted-foreground: oklch(0.45 0.02 255);
+  --accent: var(--brand-blue);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(1 0 0);
+  --border: var(--silver);
+  --input: var(--silver);
+  --ring: var(--brand-blue);
+}
+
+.dark {
+  --background: var(--navy);
+  --foreground: oklch(1 0 0);
+  --card: oklch(0.22 0.04 255);
+  --card-foreground: oklch(1 0 0);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.15);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+  }
+}
+
+@utility text-display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@utility text-eyebrow {
+  font-family: var(--font-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+@utility bg-navy-gradient {
+  background: radial-gradient(ellipse at top, oklch(0.25 0.06 255) 0%, var(--navy) 60%, oklch(0.12 0.03 255) 100%);
+}
+
+@utility bg-steel-gradient {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--steel) 100%);
+}
+
+@utility border-glow {
+  box-shadow: 0 0 0 1px oklch(1 0 0 / 0.08), 0 20px 40px -20px var(--brand-blue);
+}
+
+@utility diagonal-texture {
+  background-image:
+    linear-gradient(135deg, transparent 49.5%, oklch(0.7 0.02 255 / 0.08) 49.5%, oklch(0.7 0.02 255 / 0.08) 50.5%, transparent 50.5%);
+  background-size: 14px 14px;
+}
+
+@keyframes road-dash {
+  from { background-position: 0 0; }
+  to { background-position: 40px 0; }
+}
+
+@utility road-dashes {
+  background-image: linear-gradient(90deg, var(--brand-blue) 50%, transparent 50%);
+  background-size: 40px 2px;
+  background-repeat: repeat-x;
+  animation: road-dash 1.2s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.62 0.14 245 / 0.6); }
+  50% { box-shadow: 0 0 0 12px oklch(0.62 0.14 245 / 0); }
+}
+
+@utility pulse-glow {
+  animation: pulse-glow 2s ease-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@utility shimmer-overlay {
+  position: relative;
+  overflow: hidden;
+}
