@@ -1,8 +1,19 @@
 import { useState, type FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { Phone, MapPin, Mail, Send } from "lucide-react";
 
-function Field({ label, name, type = "text", required = true }: { label: string; name: string; type?: string; required?: boolean }) {
+function Field({
+  label,
+  name,
+  type = "text",
+  required = true,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+}) {
   const [focused, setFocused] = useState(false);
   const [val, setVal] = useState("");
   const up = focused || val.length > 0;
@@ -10,7 +21,9 @@ function Field({ label, name, type = "text", required = true }: { label: string;
     <div className="relative">
       <label
         className={`absolute left-4 pointer-events-none transition-all text-eyebrow ${
-          up ? "top-1.5 text-[10px] text-[color:var(--brand-blue)]" : "top-4 text-xs text-[color:var(--navy)]/60"
+          up
+            ? "top-1.5 text-[10px] text-[color:var(--brand-blue)]"
+            : "top-4 text-xs text-[color:var(--navy)]/60"
         }`}
       >
         {label}
@@ -30,12 +43,33 @@ function Field({ label, name, type = "text", required = true }: { label: string;
 }
 
 export function Contact() {
-  const [sent, setSent] = useState(false);
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [formKey, setFormKey] = useState(0);
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    (e.currentTarget as HTMLFormElement).reset();
+    const form = e.currentTarget;
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS environment variables are not configured.");
+      setStatus("error");
+      return;
+    }
+
+    setStatus("sending");
+
+    try {
+      await emailjs.sendForm(serviceId, templateId, form, { publicKey });
+      form.reset();
+      setFormKey((key) => key + 1);
+      setStatus("sent");
+    } catch (error) {
+      console.error("EmailJS failed to send the enquiry:", error);
+      setStatus("error");
+    }
   }
   return (
     <section id="contact" className="relative py-28 bg-[color:var(--light-silver)]">
@@ -51,6 +85,7 @@ export function Contact() {
 
         <div className="mt-14 grid lg:grid-cols-5 gap-8">
           <motion.form
+            key={formKey}
             onSubmit={onSubmit}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -58,6 +93,7 @@ export function Contact() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-3 bg-white rounded-2xl p-8 md:p-10 border border-[color:var(--silver)] space-y-5"
           >
+            <input type="hidden" name="to_email" value="gembuildersmd@gmail.com" />
             <div className="grid md:grid-cols-2 gap-5">
               <Field label="Full Name" name="name" />
               <Field label="Phone Number" name="phone" type="tel" />
@@ -70,7 +106,9 @@ export function Contact() {
                 defaultValue=""
                 className="w-full bg-white border border-[color:var(--silver)] rounded-xl py-4 px-4 text-[color:var(--navy)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-blue)]/40 focus:border-[color:var(--brand-blue)] transition appearance-none"
               >
-                <option value="" disabled>Service Required —</option>
+                <option value="" disabled>
+                  Service Required —
+                </option>
                 <option>Tar Road Construction</option>
                 <option>Civil Works</option>
                 <option>Road Roller & Compaction</option>
@@ -88,14 +126,31 @@ export function Contact() {
             </div>
             <button
               type="submit"
-              className="group relative w-full overflow-hidden rounded-xl bg-[color:var(--brand-blue)] py-4 text-white font-semibold flex items-center justify-center gap-2 hover:brightness-110 transition"
+              disabled={status === "sending"}
+              className="group relative w-full overflow-hidden rounded-xl bg-[color:var(--brand-blue)] py-4 text-white font-semibold flex items-center justify-center gap-2 hover:brightness-110 disabled:cursor-wait disabled:opacity-70 transition"
             >
               <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
               <span className="relative flex items-center gap-2">
-                {sent ? "Message Sent ✓" : "Send Message"}
-                {!sent && <Send className="h-4 w-4" />}
+                {status === "sending"
+                  ? "Sending..."
+                  : status === "sent"
+                    ? "Message Sent ✓"
+                    : "Send Message"}
+                {status !== "sent" && status !== "sending" && <Send className="h-4 w-4" />}
               </span>
             </button>
+            <div aria-live="polite" className="min-h-5 text-sm">
+              {status === "sent" && (
+                <p className="text-green-700">
+                  Thank you. Your enquiry has been sent successfully.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-red-700">
+                  We couldn't send your enquiry. Please try again or contact us directly.
+                </p>
+              )}
+            </div>
           </motion.form>
 
           <motion.div
@@ -111,7 +166,10 @@ export function Contact() {
                 <Phone className="h-5 w-5 text-[color:var(--brand-blue)] mt-0.5 shrink-0" />
                 <div>
                   <p className="text-eyebrow text-[color:var(--silver)] mb-1">Phone</p>
-                  <a href="tel:9842220310" className="text-lg font-semibold hover:text-[color:var(--brand-blue)]">
+                  <a
+                    href="tel:9842220310"
+                    className="text-lg font-semibold hover:text-[color:var(--brand-blue)]"
+                  >
                     9842220310
                   </a>
                 </div>
@@ -121,8 +179,8 @@ export function Contact() {
                 <div>
                   <p className="text-eyebrow text-[color:var(--silver)] mb-1">Address</p>
                   <p className="text-white/90 leading-relaxed">
-                  Shop no 1,ground floor,Mother's Complex, Central Studio Road,
-                  Singanallur, Coimbatore-641005.
+                    Shop no 1,ground floor,Mother's Complex, Central Studio Road, Singanallur,
+                    Coimbatore-641005.
                   </p>
                 </div>
               </div>
