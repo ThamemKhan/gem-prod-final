@@ -111,8 +111,8 @@ export function Contact() {
                 <Phone className="h-5 w-5 text-[color:var(--brand-blue)] mt-0.5 shrink-0" />
                 <div>
                   <p className="text-eyebrow text-[color:var(--silver)] mb-1">Phone</p>
-                  <a href="tel:9843407000" className="text-lg font-semibold hover:text-[color:var(--brand-blue)]">
-                    9843407000
+                  <a href="tel:9842220310" className="text-lg font-semibold hover:text-[color:var(--brand-blue)]">
+                    9842220310
                   </a>
                 </div>
               </div>

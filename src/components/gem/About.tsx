@@ -51,7 +51,7 @@
 //           <div className="mt-8 space-y-4 text-sm">
 //             <div className="flex items-center gap-3">
 //               <Phone className="h-4 w-4 text-[color:var(--brand-blue)]" />
-//               <a href="tel:9843407000" className="hover:text-[color:var(--brand-blue)]">9843407000</a>
+//               <a href="tel:9842220310" className="hover:text-[color:var(--brand-blue)]">9842220310</a>
 //             </div>
 //             <div className="flex items-center gap-3">
 //               <Mail className="h-4 w-4 text-[color:var(--brand-blue)]" />
@@ -240,8 +240,8 @@ export function About() {
                   {[
                     {
                       icon: Phone,
-                      label: "9843407000",
-                      href: "tel:9843407000",
+                      label: "9842220310",
+                      href: "tel:9842220310",
                     },
                     {
                       icon: Mail,

@@ -26,7 +26,7 @@ export function Footer() {
           <p className="text-eyebrow text-[color:var(--brand-blue)] mb-5">Contact</p>
           <ul className="space-y-3 text-sm">
             <li>Er. S. Mohammed Shafi</li>
-            <li><a href="tel:9843407000" className="hover:text-white">9843407000</a></li>
+            <li><a href="tel:9842220310" className="hover:text-white">9842220310</a></li>
             <li className="break-all"><a href="mailto:gembuildersmd@gmail.com" className="hover:text-white">gembuildersmd@gmail.com</a></li>
             <li className="text-white/60">Shop no 1,ground floor,Mother's Complex, Central Studio Road,
                 Singanallur, Coimbatore-641005.</li>

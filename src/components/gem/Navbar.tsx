@@ -53,7 +53,7 @@ export function Navbar() {
         </nav>
 
         <a
-          href="tel:9843407000"
+          href="tel:9842220310"
           className="hidden md:inline-flex items-center gap-2 rounded-full bg-[color:var(--brand-blue)] px-5 py-2.5 text-sm font-semibold text-white pulse-glow hover:brightness-110 transition"
         >
           <Phone className="h-4 w-4" /> Call Now
@@ -85,10 +85,10 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="tel:9843407000"
+            href="tel:9842220310"
             className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[color:var(--brand-blue)] px-5 py-3 text-sm font-semibold text-white"
           >
-            <Phone className="h-4 w-4" /> Call 9843407000
+            <Phone className="h-4 w-4" /> Call 9842220310
           </a>
         </nav>
       </div>
