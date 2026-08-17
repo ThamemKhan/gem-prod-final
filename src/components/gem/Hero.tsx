@@ -137,8 +137,8 @@ export function Hero() {
 
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 border-t border-white/10 pt-10">
           {[
-            { n: 12, s: "+", l: "Years Experience" },
-            { n: 500, s: "+", l: "KM Roads Built" },
+            { n: 20, s: "+", l: "Years Experience" },
+            { n: 100, s: "+", l: "KM Roads Built" },
             { n: 50, s: "+", l: "Projects Completed" },
             { n: 100, s: "%", l: "Client Satisfaction" },
           ].map((stat) => (

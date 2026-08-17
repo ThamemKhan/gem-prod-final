@@ -223,7 +223,7 @@ export function About() {
                       B.E. Civil Engineering · Founder & Director
                     </p>
                     <p className="text-[color:var(--brand-blue)] text-xs mt-2 tracking-widest uppercase font-mono">
-                      12+ Years Experience
+                      20+ Years Experience
                     </p>
                   </div>
                 </div>
